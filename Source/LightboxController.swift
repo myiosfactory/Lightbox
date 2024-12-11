@@ -164,12 +164,14 @@ open class LightboxController: UIViewController {
     
     fileprivate var initialImages: [LightboxImage]
     fileprivate let initialPage: Int
-    
+    fileprivate var enablePanGesture: Bool
+
     // MARK: - Initializers
     
-    public init(images: [LightboxImage] = [], startIndex index: Int = 0) {
+    public init(images: [LightboxImage] = [], startIndex index: Int = 0, enablePanGesture: Bool = true) {
         self.initialImages = images
         self.initialPage = index
+        self.enablePanGesture = enablePanGesture
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -190,6 +192,7 @@ open class LightboxController: UIViewController {
         
         view.backgroundColor = LightboxConfig.imageBackgroundColor
         transitionManager.lightboxController = self
+        transitionManager.enablePanGesture = enablePanGesture
         transitionManager.scrollView = scrollView
         transitioningDelegate = transitionManager
         
