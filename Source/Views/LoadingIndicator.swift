@@ -12,11 +12,18 @@ class LoadingIndicator: UIView {
     clipsToBounds = true
     alpha = 0
 
-    indicator = UIActivityIndicatorView()
-    indicator.style = .whiteLarge
+    // indicator = UIActivityIndicatorView()
+    // indicator.style = .whiteLarge
+    indicator = UIActivityIndicatorView(style: .whiteLarge)
+    indicator.translatesAutoresizingMaskIntoConstraints = false
     indicator.startAnimating()
 
     addSubview(indicator)
+
+    NSLayoutConstraint.activate([
+      indicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+      indicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+    ])
   }
 
   required init?(coder aDecoder: NSCoder) {
