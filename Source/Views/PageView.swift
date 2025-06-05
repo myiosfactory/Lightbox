@@ -55,6 +55,7 @@ class PageView: UIScrollView {
     }()
     
     lazy var loadingIndicator: UIView = LightboxConfig.makeLoadingIndicator()
+    lazy var isShowLoadingIndicator: Bool = LightboxConfig.showLoader
     
     var image: LightboxImage
     var contentFrame = CGRect.zero
@@ -86,7 +87,9 @@ class PageView: UIScrollView {
         
         updatePlayButton()
         
-        addSubview(loadingIndicator)
+        if isShowLoadingIndicator {
+            addSubview(loadingIndicator)
+        }
         
         delegate = self
         isMultipleTouchEnabled = true
@@ -123,7 +126,9 @@ class PageView: UIScrollView {
     
     // MARK: - Fetch
     private func fetchImage () {
-        loadingIndicator.alpha = 1
+        if isShowLoadingIndicator {
+            loadingIndicator.alpha = 1
+        }
         self.image.addImageTo(imageView) { [weak self] image in
             guard let self = self else {
                 return
@@ -133,8 +138,10 @@ class PageView: UIScrollView {
             self.configureImageView()
             self.pageViewDelegate?.remoteImageDidLoad(image, imageView: self.imageView)
             
-            UIView.animate(withDuration: 0.4) {
-                self.loadingIndicator.alpha = 0
+            if isShowLoadingIndicator {
+                UIView.animate(withDuration: 0.4) {
+                    self.loadingIndicator.alpha = 0
+                }
             }
         }
     }

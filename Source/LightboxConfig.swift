@@ -27,6 +27,8 @@ public class LightboxConfig {
   public static var makeLoadingIndicator: () -> UIView = {
     return LoadingIndicator()
   }
+    
+  public static var showLoader = true
 
   /// Number of images to preload.
   ///
