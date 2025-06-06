@@ -127,8 +127,9 @@ class PageView: UIScrollView {
     // MARK: - Fetch
     private func fetchImage () {
         
-        if LightboxConfig.showLocalImagePath {
+        if LightboxConfig.showLocalImage {
             if let stringUrl = image.imageURL?.absoluteString {
+                print("Display local url path:- \(stringUrl)")
                 self.imageView.image = UIImage(contentsOfFile: stringUrl)
             }
         } else {

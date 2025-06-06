@@ -25,14 +25,17 @@ class ViewController: UIViewController {
         view.addSubview(showButton)
         title = "Lightbox"
         //    LightboxConfig.preload = 2
+        /*
         LightboxConfig.loadImage = { imageView, url, completion in
             imageView.sd_setImage(with: url) { image, _, _ , _ in
 //      imageView.sd_setImage(with: url, placeholderImage: nil, options: [.scaleDownLargeImages]) { image, _, _, _ in
                 completion?(image)
             }
         }
+        */
         
         LightboxConfig.showLoader = false
+        LightboxConfig.showLocalImage = true
     }
     
     var currentLightboxController: LightboxController?
@@ -43,8 +46,8 @@ class ViewController: UIViewController {
 //        let thumbURL = URL(string: "https://firebasestorage.googleapis.com:443/v0/b/dragonai-app.appspot.com/o/users%2F4AB41269-8804-462F-A0E7-3C0CFFFDB476%2Fgallery%2Fgenerationimages%2F5B0982A6-FEEC-4D87-AA2B-6D3EC4A4E4B6.jpeg?alt=media&token=cf0eaf79-67be-4002-8ecb-ee38da868524")!
 //        let thumbURL = URL(string: "https://firebasestorage.googleapis.com:443/v0/b/dragonai-app.appspot.com/o/users%2F4AB41269-8804-462F-A0E7-3C0CFFFDB476%2Fgallery%2Fthumbnailimages%2F88A4E6FA-6A1D-4DAC-BA65-F265DDC84718.jpeg?alt=media&token=c1acf922-7073-4635-9de9-80c30447a4f3")!
 //        let thumbURL = URL(string: "https://firebasestorage.googleapis.com:443/v0/b/dragonai-app.appspot.com/o/users%2F4AB41269-8804-462F-A0E7-3C0CFFFDB476%2Fgallery%2Fimages%2FE1A2983B-81CF-4182-93D8-583327461662.jpeg?alt=media&token=cbb27e53-c5e1-4f14-9720-c7d7324bef3b")!
-        let thumbURL = URL(string: "/Users/krushnamthoria/Library/Developer/CoreSimulator/Devices/895A3479-320F-46A2-8AF5-6E6A7533AB92/data/Containers/Data/Application/FA7FD2BB-6FC0-40F5-90B4-73868F37AF4B/Library/Caches/thumbnails/e9f2crdes1rme0cmt1nsm8ek38.jpeg")!
-        let fullURL = URL(string: "/Users/krushnamthoria/Library/Developer/CoreSimulator/Devices/895A3479-320F-46A2-8AF5-6E6A7533AB92/data/Containers/Data/Application/FA7FD2BB-6FC0-40F5-90B4-73868F37AF4B/Library/Caches/originals/e9f2crdes1rme0cmt1nsm8ek38.jpeg")!
+        let thumbURL = URL(string: "/Users/krushnamthoria/Library/Developer/CoreSimulator/Devices/895A3479-320F-46A2-8AF5-6E6A7533AB92/data/Containers/Data/Application/558F38FB-1D3C-47CA-AD6A-2CC1AA5B6800/Library/Caches/thumbnails/e9f2crdes1rme0cmt1nsm8ek38.jpeg")!
+        let fullURL = URL(string: "/Users/krushnamthoria/Library/Developer/CoreSimulator/Devices/895A3479-320F-46A2-8AF5-6E6A7533AB92/data/Containers/Data/Application/558F38FB-1D3C-47CA-AD6A-2CC1AA5B6800/Library/Caches/originals/e9f2crdes1rme0cmt1nsm8ek38.jpeg")!
         
         let thumbnailImage = LightboxImage(imageURL: thumbURL)
         let controller = LightboxController(images: [thumbnailImage])

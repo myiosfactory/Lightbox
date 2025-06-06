@@ -30,7 +30,7 @@ public class LightboxConfig {
     
     public static var showLoader = true
     
-    public static var showLocalImagePath = false
+    public static var showLocalImage = false
 
   /// Number of images to preload.
   ///
