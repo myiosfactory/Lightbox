@@ -103,7 +103,7 @@ class LightboxTransition: UIPercentDrivenInteractiveTransition {
 extension LightboxTransition: UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: (any UIViewControllerContextTransitioning)?) -> TimeInterval {
-        return 0.25
+        return 0//.25
     }
     
     func animateTransition(using transitionContext: any UIViewControllerContextTransitioning) {
