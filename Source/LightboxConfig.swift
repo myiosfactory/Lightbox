@@ -28,7 +28,9 @@ public class LightboxConfig {
     return LoadingIndicator()
   }
     
-  public static var showLoader = true
+    public static var showLoader = true
+    
+    public static var showLocalImagePath = false
 
   /// Number of images to preload.
   ///

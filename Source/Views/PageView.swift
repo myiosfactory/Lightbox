@@ -126,21 +126,29 @@ class PageView: UIScrollView {
     
     // MARK: - Fetch
     private func fetchImage () {
-        if isShowLoadingIndicator {
-            loadingIndicator.alpha = 1
-        }
-        self.image.addImageTo(imageView) { [weak self] image in
-            guard let self = self else {
-                return
+        
+        if LightboxConfig.showLocalImagePath {
+            if let stringUrl = image.imageURL?.absoluteString {
+                self.imageView.image = UIImage(contentsOfFile: stringUrl)
+            }
+        } else {
+            if isShowLoadingIndicator {
+                loadingIndicator.alpha = 1
             }
             
-            self.isUserInteractionEnabled = true
-            self.configureImageView()
-            self.pageViewDelegate?.remoteImageDidLoad(image, imageView: self.imageView)
-            
-            if isShowLoadingIndicator {
-                UIView.animate(withDuration: 0.4) {
-                    self.loadingIndicator.alpha = 0
+            self.image.addImageTo(imageView) { [weak self] image in
+                guard let self = self else {
+                    return
+                }
+                
+                self.isUserInteractionEnabled = true
+                self.configureImageView()
+                self.pageViewDelegate?.remoteImageDidLoad(image, imageView: self.imageView)
+                
+                if isShowLoadingIndicator {
+                    UIView.animate(withDuration: 0.4) {
+                        self.loadingIndicator.alpha = 0
+                    }
                 }
             }
         }
