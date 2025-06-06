@@ -235,6 +235,16 @@ open class LightboxController: UIViewController {
         return LightboxConfig.hideStatusBar
     }
     
+    // MARK: - Public image update
+
+    /// Updates the current image without recreating the view.
+    public func updateCurrentImage(to newImage: LightboxImage) {
+        guard currentPage < pageViews.count else { return }
+        let pageView = pageViews[currentPage]
+        pageView.update(with: newImage)
+        self.initialImages[currentPage] = newImage
+    }
+    
     // MARK: - Rotation
     
     override open func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
@@ -339,7 +349,7 @@ open class LightboxController: UIViewController {
     
     fileprivate func loadDynamicBackground(_ image: UIImage) {
         backgroundView.image = image
-//        backgroundView.layer.add(CATransition(), forKey: "fade")
+        backgroundView.layer.add(CATransition(), forKey: "fade")
     }
     
     func toggleControls(pageView: PageView?, visible: Bool, duration: TimeInterval = 0.1, delay: TimeInterval = 0) {
